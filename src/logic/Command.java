@@ -35,6 +35,7 @@ public class Command {
 		}
 	}
 	
+	
 	//Update repository
 	public void gitPull() {
 
