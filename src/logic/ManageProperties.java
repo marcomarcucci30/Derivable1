@@ -24,7 +24,7 @@ public class ManageProperties {
         }
         if (input == null) {
         	try {
-				input = new FileInputStream("C:\\Users\\marco\\Desktop\\Project Test\\Milestone1\\trunk\\JavaResources\\config.properties");
+				input = new FileInputStream("JavaResources\\config.properties");
 				prop.load(input);
 			} catch (FileNotFoundException e) {
 				log.log(Level.SEVERE,"FileNotFoundException", e);
@@ -37,12 +37,7 @@ public class ManageProperties {
     } 
 
 	public static void main(String[] args) {
-		Properties properties = ManageProperties.getInstance();
-		log.info(properties.getProperty("marco"));
-		
-
-		Properties properties1 = ManageProperties.getInstance();
-		log.info(properties1.getProperty("elisa"));
+		//Nothing to do
 	}
 
 }

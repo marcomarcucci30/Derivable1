@@ -16,10 +16,15 @@ public class Command {
 	private static final Logger log = Logger.getLogger(Command.class.getName());
 	private static Properties prop = ManageProperties.getInstance();
 	private static String excpetion = "Object is null";
-	private String directory = "directory";
+	//private String directory = "directory";
 	private String gitC = "git -C";
+	private static String pathDirFin = "\\";
+	private static String pathDir = "..\\..\\" + prop.getProperty("PROJECT").toLowerCase() +pathDirFin;
+	private static String repoUrl = prop.getProperty("REPO_APACHE_PREFIX")+prop.getProperty("PROJECT").toLowerCase()+".git";
+
 	private String ioException = "IOException in command";
 	private String interruptedException = "InterruptedException in Command.";
+
 
 	public Command(String keyValue) {
 		setTicket(keyValue);
@@ -39,7 +44,7 @@ public class Command {
 	//Update repository
 	public void gitPull() {
 
-		String command = gitC+" "+prop.getProperty(directory)+" pull "+ prop.getProperty("repo")+"";
+		String command = gitC+" "+pathDir+" pull "+ repoUrl+"";
 		Process p = null;
 		try {
 			//execute Command
@@ -64,7 +69,7 @@ public class Command {
 	//Clone the repository in the specified directory
 	public void gitClone() {
 		
-		String command = "git clone "+prop.getProperty("repo")+" "+prop.getProperty(directory)+"";
+		String command = "git clone "+repoUrl+" "+pathDir;
 		Process p = null;
 		try {
 			//execute command
@@ -89,8 +94,8 @@ public class Command {
 	//return the date of the first and last commit of the the project
 	public List<String> lifeProject() throws IOException {	
 		//Command log commit
-		String commandEndDate = gitC+" "+ prop.getProperty(directory) +" log --pretty=format:\"%cd\" --date=iso-strict --max-count=1";
-		String commandBeginDate = gitC+" "+ prop.getProperty(directory) +" rev-list --reverse --max-parents=0 HEAD --pretty=format:\"%cd\" --date=iso-strict";
+		String commandEndDate = gitC+" "+ pathDir +" log --pretty=format:\"%cd\" --date=iso-strict --max-count=1";
+		String commandBeginDate = gitC+" "+ pathDir +" rev-list --reverse --max-parents=0 HEAD --pretty=format:\"%cd\" --date=iso-strict";
 		
 		Process pBegin = null;
 		Process pEnd = null;
@@ -143,7 +148,7 @@ public class Command {
 	
 	public String log() {	
 		//Command log commit
-		String command = gitC+" "+ prop.getProperty(directory) +" log --pretty=format:\"%cd\" "
+		String command = gitC+" "+ pathDir+" log --pretty=format:\"%cd\" "
 				+ "--grep=" + ticket +" --date=iso-strict  --max-count=1";
 		
 		

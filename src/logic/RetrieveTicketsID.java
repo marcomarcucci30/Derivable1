@@ -64,7 +64,7 @@ public class RetrieveTicketsID {
   		   cmd.gitClone();
   		   log.info(prop.getProperty("WaitingMain"));
   		   
-  		   String projName =prop.getProperty("MAHOUT");
+  		   String projName =prop.getProperty("PROJECT");
 	   Integer j = 0;
 	   Integer i = 0;
 	   Integer total = 1;
