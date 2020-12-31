@@ -16,7 +16,6 @@ public class Command {
 	private static final Logger log = Logger.getLogger(Command.class.getName());
 	private static Properties prop = ManageProperties.getInstance();
 	private static String excpetion = "Object is null";
-	//private String directory = "directory";
 	private String gitC = "git -C";
 	private static String pathDirFin = "\\";
 	private static String pathDir = "..\\..\\" + prop.getProperty("PROJECT").toLowerCase() +pathDirFin;
